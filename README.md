@@ -1,5 +1,12 @@
 # PowerSquad
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Power%20Platform-742774)
+![Dynamics 365](https://img.shields.io/badge/Dynamics%20365-Sales%20%7C%20Service-0067b8)
+![Copilot Studio](https://img.shields.io/badge/Copilot%20Studio-agents-00a67e)
+![Multi-agent](https://img.shields.io/badge/architecture-multi--agent-ff6f00)
+![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 A squad of specialist agents that take a **Dynamics 365 / Power Platform** demo, PoC,
 or customization from a vague client request all the way to a packaged, presentable
 deliverable — including the working artifacts, a business-value deck, and a presentation script.
@@ -27,12 +34,35 @@ The combined, packaged deliverable is called the **delivery pack**.
 
 ## How it works (4 phases)
 
+```mermaid
+flowchart LR
+    U([You / Solution Engineer]) -->|request| Z
+    subgraph Squad
+        Z{{Zord\nSolution Architect}}
+        Z -->|Phase 1: Intake| GOLD[Gold Ranger\nDiscovery]
+        Z -->|Phase 3: Build| BLACK[Black Ranger\nData Model]
+        BLACK --> GREEN[Green Ranger\nData Seeder]
+        GREEN --> RED[Red Ranger\nPower Apps]
+        GREEN --> YELLOW[Yellow Ranger\nPower Automate]
+        GREEN --> BLUE[Blue Ranger\nPower Pages]
+        GREEN --> WHITE[White Ranger\nCopilot Studio]
+        Z -->|Phase 4: Package| PINK[Pink Ranger\nDeck + Script]
+        SILVER[Silver Ranger\nSession Logger]
+    end
+    Z -.->|Phase 2: Scope + gates| U
+    PINK -->|delivery pack| U
+
+    classDef zord fill:#111,color:#fff,stroke:#888;
+    class Z zord;
+```
+
 1. **Intake** — You tell Zord about the client (name, client/opportunity ID, meetings, chats).
  Gold Ranger gathers context from CRM Sales and WorkIQ.
 2. **Scope** — Zord discusses with you: business value, low-hanging fruit, what to build.
  Zord runs the **autonomy gate** and only proceeds once scope is clear.
 3. **Build** — The specialist agents execute in dependency order (data model → data →
  apps/flows/pages/agent), each in the demo org, packaged into a Dataverse **solution**.
+ Red / Yellow / Blue / White Ranger run in parallel once the model + seed data exist.
 4. **Package** — Pink Ranger produces the deck + script. Everything ships as **the delivery pack**.
 
 See `workflow.md` for the full flow and `execution-surface.md` for the concrete tooling

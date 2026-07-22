@@ -1,0 +1,25 @@
+# Normalize line endings to LF in the repo; check out native on each OS.
+* text=auto eol=lf
+
+# Windows-native scripts keep CRLF on checkout.
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Treat these as text.
+*.md   text
+*.json text
+*.yml  text
+*.yaml text
+*.csv  text
+
+# Binary assets (never diff/merge).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.pdf binary
+*.pptx binary
+*.xlsx binary
+*.docx binary
