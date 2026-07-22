@@ -36,21 +36,21 @@ The combined, packaged deliverable is called the **delivery pack**.
 
 ```mermaid
 flowchart LR
-    U([You / Solution Engineer]) -->|request| Z
+    U(["You / Solution Engineer"]) -->|request| Z
     subgraph Squad
-        Z{{Zord\nSolution Architect}}
-        Z -->|Phase 1: Intake| GOLD[Gold Ranger\nDiscovery]
-        Z -->|Phase 3: Build| BLACK[Black Ranger\nData Model]
-        BLACK --> GREEN[Green Ranger\nData Seeder]
-        GREEN --> RED[Red Ranger\nPower Apps]
-        GREEN --> YELLOW[Yellow Ranger\nPower Automate]
-        GREEN --> BLUE[Blue Ranger\nPower Pages]
-        GREEN --> WHITE[White Ranger\nCopilot Studio]
-        Z -->|Phase 4: Package| PINK[Pink Ranger\nDeck + Script]
-        SILVER[Silver Ranger\nSession Logger]
+        Z{{"Zord — Solution Architect"}}
+        Z -->|"Phase 1: Intake"| GOLD["Gold Ranger<br/>Discovery"]
+        Z -->|"Phase 3: Build"| BLACK["Black Ranger<br/>Data Model"]
+        BLACK --> GREEN["Green Ranger<br/>Data Seeder"]
+        GREEN --> RED["Red Ranger<br/>Power Apps"]
+        GREEN --> YELLOW["Yellow Ranger<br/>Power Automate"]
+        GREEN --> BLUE["Blue Ranger<br/>Power Pages"]
+        GREEN --> WHITE["White Ranger<br/>Copilot Studio"]
+        Z -->|"Phase 4: Package"| PINK["Pink Ranger<br/>Deck + Script"]
+        SILVER["Silver Ranger<br/>Session Logger"]
     end
-    Z -.->|Phase 2: Scope + gates| U
-    PINK -->|delivery pack| U
+    Z -.->|"Phase 2: Scope + gates"| U
+    PINK -->|"delivery pack"| U
 
     classDef zord fill:#111,color:#fff,stroke:#888;
     class Z zord;
