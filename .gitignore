@@ -1,0 +1,36 @@
+# ---- Secrets / environment ------------------------------------------------
+# Your real tenant details live here — NEVER commit them.
+.env
+.env.*
+!.env.example
+
+# ---- Private engagement data ----------------------------------------------
+# Real client dossiers, decks, seed data, screenshots, proofs. Only the
+# fictional EXAMPLE walkthrough is tracked.
+library/clients/*
+!library/clients/EXAMPLE-contoso-water/
+_proof/
+**/_proof/
+
+# ---- Scout / local tooling state ------------------------------------------
+.copilot/
+.scout/
+*.session
+session-state/
+
+# ---- OS / editor junk -----------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# ---- Build / temp ---------------------------------------------------------
+node_modules/
+dist/
+bin/
+obj/
+*.log
+*.tmp

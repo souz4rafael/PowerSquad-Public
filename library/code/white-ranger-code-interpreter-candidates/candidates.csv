@@ -1,0 +1,10 @@
+FullName,Email,MonthlySalary,AnnualComp,Stage,SeniorityBand
+Alex Rivera,user@contoso.com,10000.0,120000.0,Applied,Mid
+Ava Chen,ava.chen@example.com,45000.0,540000.0,Applied,Senior
+Marcus Rivera,marcus.r@example.com,9500.0,114000.0,Interview,Mid
+Sophia Johansson,sophia.j@example.com,11000.0,132000.0,Offer,Senior
+David Okafor,d.okafor@example.com,7800.0,93600.0,Applied,Junior
+Elena Petrov,elena.p@example.com,10200.0,122400.0,Interview,Mid
+James Nakamura,j.nakamura@example.com,12500.0,150000.0,Offer,Senior
+Ana Test Candidate,ana.test@example.com,6500.0,78000.0,Applied,Junior
+Bruno Test Candidate,bruno.test@example.com,8200.0,98400.0,Applied,Mid

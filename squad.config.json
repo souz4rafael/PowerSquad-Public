@@ -1,0 +1,126 @@
+{
+ "squad": "PowerSquad",
+ "codename": "delivery-pack",
+ "theme": "power-rangers",
+ "displayNamesEditable": true,
+ "directInvocation": {
+ "enabled": true,
+ "note": "Address any agent by internal or display name to run a scoped task without going through Zord. Guardrails still apply; agents check prerequisites first."
+ },
+ "buildTarget": {
+ "demoOrgUrl": "${DEMO_ORG_URL}",
+ "environment": "${ENVIRONMENT_NAME}",
+ "environmentId": "${ENVIRONMENT_ID}",
+ "mcp": "${DEMO_MCP}",
+ "demoTenantId": "${TENANT_ID}",
+ "nativeAdmin": "${ADMIN_UPN}",
+ "identityRule": "Build with the native tenant admin for browser + all CLIs/MCP. Guests break tooling (404 / env-not-found / orphaned ownership). See identity.md."
+ },
+ "solution": {
+ "rule": "EVERY Dataverse-backed artifact the squad creates MUST live inside the active delivery solution (publisher prefix 'psq'). Zord owns this: she creates/identifies the solution, BROADCASTS its unique name to every builder in their brief, and runs a final solution audit to backfill any orphan that landed in Default. The ONLY exception is Pink Ranger (Storyteller): her deck/script save to the PC/library, not the solution.",
+ "currentSolution": "psq_demo",
+ "currentSolutionNote": "For a quick demo, use a single reusable solution 'psq_demo' and put every artifact in it. Per real client engagement, Zord creates a fresh 'psq_<client>_<yyyymmdd>' instead.",
+ "storytellerException": true,
+ "powerPagesSolutionAware": "Power Pages IS solution-aware (enhanced data model). Studio Data ⚙ 'Set a solution' sets the Current solution (defaults to Default CDS solution — switch to psq_demo first). Add the site via Solutions → Add existing → Site; backing Dataverse tables must be added separately.",
+ "gitIntegration": {
+ "rule": "Zord binds the delivery solution to source control via Dataverse NATIVE Git integration (Solutions → Connect to Git). Native integration is Azure DevOps Git (not GitHub). Requires Managed Environments + an ADO org/project/repo + system administrator. Default/CDS Default solution CANNOT be Git-connected — another reason everything lives in the delivery solution. Solution-bind psq_demo to an ADO repo and do a first commit.",
+ "status": "optional",
+ "binding": "environment-binding recommended to start; solution-binding to scope just psq_demo"
+ }
+ },
+ "contextSources": {
+ "powerPlatformDevDocs": "https://learn.microsoft.com/en-us/power-platform/developer/ — CANONICAL reference for ALL Power Platform work (pac CLI, Dataverse Web API, Power Fx, apps, solutions/ALM, Power Pages, connectors, Copilot Studio). Consult before implementing/verifying across every agent.",
+ "crmSales": "copilot -p \"...\" --allow-all-tools (crm-sales-mcp, read-only)",
+ "workiq": "C:/Users/${USER}/.copilot/bin/workiq.cmd + workiq_* tools"
+ },
+ "roster": [
+ {
+ "order": 1,
+ "internalName": "Zord",
+ "displayName": "Solution Architect",
+ "role": "solution-architect",
+ "lead": true,
+ "gate": true,
+ "color": "#B59410",
+ "spec": "agents/01-zord-solution-architect.md"
+ },
+ {
+ "order": 2,
+ "internalName": "Gold Ranger",
+ "displayName": "Discovery Analyst",
+ "role": "discovery",
+ "color": "#002050",
+ "tooling": ["CRM Sales via copilot CLI", "workiq"],
+ "spec": "agents/02-gold-ranger-discovery-analyst.md"
+ },
+ {
+ "order": 3,
+ "internalName": "Black Ranger",
+ "displayName": "Data Modeler",
+ "role": "dataverse-modeler",
+ "app": "Dataverse",
+ "color": "#0B6A37",
+ "tooling": ["${DEMO_MCP}", "pac-mcp", "copilot CLI"],
+ "spec": "agents/03-black-ranger-data-modeler.md"
+ },
+ {
+ "order": 4,
+ "internalName": "Green Ranger",
+ "displayName": "Data Seeder",
+ "role": "data-seeder",
+ "color": "#84C225",
+ "tooling": ["${DEMO_MCP}", "copilot CLI"],
+ "spec": "agents/04-green-ranger-data-seeder.md"
+ },
+ {
+ "order": 5,
+ "internalName": "Red Ranger",
+ "displayName": "Power Apps Builder",
+ "role": "power-apps",
+ "app": "Power Apps",
+ "color": "#742774",
+ "tooling": ["pac-mcp", "playwright", "${DEMO_MCP}"],
+ "spec": "agents/05-red-ranger-power-apps.md"
+ },
+ {
+ "order": 6,
+ "internalName": "Yellow Ranger",
+ "displayName": "Power Automate Builder",
+ "role": "power-automate",
+ "app": "Power Automate",
+ "color": "#0066FF",
+ "tooling": ["pac-mcp", "playwright"],
+ "spec": "agents/06-yellow-ranger-power-automate.md"
+ },
+ {
+ "order": 7,
+ "internalName": "Blue Ranger",
+ "displayName": "Power Pages Builder",
+ "role": "power-pages",
+ "app": "Power Pages",
+ "color": "#5C2E91",
+ "tooling": ["pac-mcp", "playwright", "${DEMO_MCP}"],
+ "spec": "agents/07-blue-ranger-power-pages.md"
+ },
+ {
+ "order": 8,
+ "internalName": "White Ranger",
+ "displayName": "Copilot Studio Builder",
+ "role": "copilot-studio",
+ "app": "Copilot Studio",
+ "color": "#7B61FF",
+ "tooling": ["playwright", "${DEMO_MCP}"],
+ "spec": "agents/08-white-ranger-copilot-studio.md"
+ },
+ {
+ "order": 9,
+ "internalName": "Pink Ranger",
+ "displayName": "Storyteller",
+ "role": "storyteller",
+ "app": "PowerPoint / HTML",
+ "color": "#C43E1C",
+ "tooling": ["pptx skill", "web-artifacts-builder skill"],
+ "spec": "agents/09-pink-ranger-storyteller.md"
+ }
+ ]
+}

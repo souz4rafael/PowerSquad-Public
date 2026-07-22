@@ -1,0 +1,99 @@
+{
+ "type": "AdaptiveCard",
+ "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+ "version": "1.5",
+ "body": [
+ {
+ "type": "Container",
+ "style": "emphasis",
+ "bleed": true,
+ "items": [
+ {
+ "type": "ColumnSet",
+ "columns": [
+ {
+ "type": "Column",
+ "width": "auto",
+ "verticalContentAlignment": "Center",
+ "items": [
+ {
+ "type": "Image",
+ "style": "Person",
+ "size": "Medium",
+ "url": "https://adaptivecards.io/content/persona.png",
+ "altText": "Candidate"
+ }
+ ]
+ },
+ {
+ "type": "Column",
+ "width": "stretch",
+ "verticalContentAlignment": "Center",
+ "items": [
+ {
+ "type": "TextBlock",
+ "text": "Sophia Johansson",
+ "weight": "Bolder",
+ "size": "Large",
+ "wrap": true
+ },
+ {
+ "type": "TextBlock",
+ "text": "Account Executive",
+ "isSubtle": true,
+ "spacing": "None",
+ "wrap": true
+ }
+ ]
+ },
+ {
+ "type": "Column",
+ "width": "auto",
+ "verticalContentAlignment": "Center",
+ "items": [
+ {
+ "type": "TextBlock",
+ "text": "Offer",
+ "weight": "Bolder",
+ "color": "Accent",
+ "horizontalAlignment": "Right",
+ "wrap": true
+ }
+ ]
+ }
+ ]
+ }
+ ]
+ },
+ {
+ "type": "FactSet",
+ "spacing": "Medium",
+ "facts": [
+ { "title": "Stage", "value": "Offer" },
+ { "title": "Annual comp", "value": "132,000 USD" },
+ { "title": "Seniority", "value": "Senior" },
+ { "title": "Email", "value": "sophia.j@example.com" }
+ ]
+ },
+ {
+ "type": "TextBlock",
+ "text": "Summary",
+ "weight": "Bolder",
+ "spacing": "Medium",
+ "wrap": true
+ },
+ {
+ "type": "TextBlock",
+ "text": "Strong account-executive candidate at the Offer stage. Senior-level compensation, well-aligned with the role's expectations.",
+ "wrap": true,
+ "isSubtle": true
+ }
+ ],
+ "actions": [
+ {
+ "type": "Action.OpenUrl",
+ "title": "Open record",
+ "url": "https://make.powerapps.com"
+ }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "properties": {
+ "connectionReferences": {
+ "shared_commondataserviceforapps": {
+ "api": {
+ "name": "shared_commondataserviceforapps"
+ },
+ "connection": {
+ "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_1f656"
+ },
+ "runtimeSource": "embedded"
+ }
+ },
+ "definition": {
+ "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas//workflowdefinition.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+ "$authentication": {
+ "defaultValue": {},
+ "type": "SecureObject"
+ },
+ "$connections": {
+ "defaultValue": {},
+ "type": "Object"
+ }
+ },
+ "triggers": {
+ "manual": {
+ "type": "Request",
+ "kind": "Skills",
+ "inputs": {
+ "schema": {
+ "type": "object",
+ "properties": {
+ "text": {
+ "description": "The full name of the candidate to draft a job offer email for",
+ "title": "CandidateName",
+ "type": "string",
+ "x-ms-content-hint": "TEXT",
+ "x-ms-dynamically-added": true
+ },
+ "text_1": {
+ "description": "The position the candidate applied for",
+ "title": "Position",
+ "type": "string",
+ "x-ms-content-hint": "TEXT",
+ "x-ms-dynamically-added": true
+ },
+ "text_2": {
+ "description": "The proposed annual salary for the offer",
+ "title": "AnnualSalary",
+ "type": "string",
+ "x-ms-content-hint": "TEXT",
+ "x-ms-dynamically-added": true
+ }
+ },
+ "required": [
+ "text",
+ "text_1",
+ "text_2"
+ ]
+ }
+ },
+ "metadata": {
+ "operationMetadataId": "00000000-0000-0000-0000-000000000000"
+ }
+ }
+ },
+ "actions": {
+ "Respond_to_the_agent": {
+ "type": "Response",
+ "kind": "Skills",
+ "inputs": {
+ "schema": {
+ "type": "object",
+ "properties": {
+ "offeremaildraft": {
+ "title": "OfferEmailDraft",
+ "description": "",
+ "type": "string",
+ "x-ms-content-hint": "TEXT",
+ "x-ms-dynamically-added": true
+ }
+ },
+ "additionalProperties": {}
+ },
+ "statusCode": 200,
+ "body": {
+ "offeremaildraft": "@{outputs(\u0027Run_a_prompt\u0027)?[\u0027body/responsev2/predictionOutput/text\u0027]}"
+ }
+ },
+ "runAfter": {
+ "Run_a_prompt": [
+ "SUCCEEDED"
+ ]
+ },
+ "metadata": {
+ "operationMetadataId": "00000000-0000-0000-0000-000000000000"
+ }
+ },
+ "Run_a_prompt": {
+ "type": "OpenApiConnection",
+ "inputs": {
+ "parameters": {
+ "recordId": "${MODEL_RECORD_ID}",
+ "item/requestv2/CandidateName": "@triggerBody?[\u0027text\u0027]",
+ "item/requestv2/AnnualSalary": "@triggerBody?[\u0027text_2\u0027]",
+ "item/requestv2/Position": "@triggerBody?[\u0027text_1\u0027]"
+ },
+ "host": {
+ "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+ "operationId": "aibuilderpredict_customprompt",
+ "connectionName": "shared_commondataserviceforapps"
+ }
+ },
+ "runAfter": {}
+ }
+ },
+ "outputs": {},
+ "description": "When an agent calls the flow and send back a response."
+ }
+ },
+ "schemaVersion": "1.0.0.0"
+}
